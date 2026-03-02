@@ -38,18 +38,3 @@ This repository contains the **Frontend** of the application, built with React a
 * **Notifications:** React Hot Toast
 
 ---
-
-##  Getting Started
-
-Follow these instructions to get a copy of the project up and running on your local machine.
-
-### Prerequisites
-Make sure you have Node.js and npm (or yarn) installed.
-* [Node.js](https://nodejs.org/) (v16 or higher recommended)
-
-### Installation
-
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/naim13107/bondhon-blood-bank-frontend.git](https://github.com/naim13107/bondhon-blood-bank-frontend.git)
-   cd bondhon-blood-bank-frontend
