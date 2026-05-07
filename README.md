@@ -1,40 +1,242 @@
+# 🩸 Bondhon — Blood Bank Frontend
 
-#  Bondhon - Emergency Blood Bank & Donor Network
+A modern, fully responsive web application that connects blood donors with patients in need. Built with **React 19** and **Vite**, powered by the [Bondhon Backend API](https://github.com/naim13107/Bondhon-BloodBank-Backend).
 
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
-
-**Bondhon** is a modern, responsive web application designed to bridge the gap between blood donors and patients in need. It allows users to post emergency blood requests, manage their donor availability, and financially support the platform through integrated fundraising campaigns.
-
-This repository contains the **Frontend** of the application, built with React and Vite.
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-bondhon--blood--bank.vercel.app-red?style=flat-square&logo=vercel)](https://bondhon-blood-bank.vercel.app/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-7-646CFF?style=flat-square&logo=vite)](https://vitejs.dev/)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
+[![DaisyUI](https://img.shields.io/badge/DaisyUI-5-1AD1A5?style=flat-square)](https://daisyui.com/)
 
 ---
 
-##  Key Features
+## 🌐 Live Demo
 
-* ** User Authentication:** Secure JWT-based login and registration system.
-* ** Emergency Blood Requests:** * Users can post urgent requests for specific blood groups and locations.
-  * Real-time tracking of needed vs. fulfilled blood bags.
-  * Donors can accept or withdraw from requests with a single click.
-* ** Dynamic Donor Profiles:** * Track vital donor statistics like Age, Blood Group, and Last Donation Date.
-  * Automatic "Cooldown Period" or "Available" status based on recent donations.
-* ** Fundraising & Payments (SSLCommerz):**
-  * Seamless integration with the SSLCommerz payment gateway for financial contributions.
-  * Dedicated Donor Dashboard to view transaction history and receipt statuses (Success, Pending, Failed).
-* ** Responsive Design:** Fully mobile-friendly interface styled with Tailwind CSS and DaisyUI components.
+👉 **[https://bondhon-blood-bank.vercel.app/](https://bondhon-blood-bank.vercel.app/)**
+
+**Backend API:** [https://bloodbank-teal.vercel.app/api/v1/](https://bloodbank-teal.vercel.app/api/v1/)
 
 ---
 
-##  Tech Stack
+## ✨ Features
 
-* **Core:** React 18, Vite
-* **Routing:** React Router DOM v6
-* **Styling & UI:** Tailwind CSS, DaisyUI
-* **Icons:** Lucide React
-* **Form Handling & Validation:** React Hook Form
-* **HTTP Client:** Axios (Custom `apiClient` interceptors for JWT)
-* **Notifications:** React Hot Toast
+### 🔐 Authentication
+- JWT-based secure login and registration
+- Persistent sessions with automatic token refresh via Axios interceptors
+- Protected routes for authenticated users
+
+### 🆘 Emergency Blood Requests
+- Post urgent requests specifying blood group, location, and quantity needed
+- Real-time tracking of required vs. fulfilled blood bags
+- Donors can accept or withdraw from requests with a single click
+
+### 🧑‍⚕️ Donor Profiles
+- Register as a blood donor with blood group, age, and availability status
+- Automatic cooldown detection based on last donation date
+- Browse all available donors and filter by blood group
+
+### 💳 Fundraising & Payments
+- Integrated **SSLCommerz** payment gateway for financial contributions
+- Donor dashboard with full transaction history
+- Payment receipt statuses: Success, Pending, and Failed
+
+### 📱 Responsive Design
+- Fully mobile-friendly interface
+- Smooth UI with Swiper carousels, toast notifications, and icon support
 
 ---
+
+## 🛠️ Tech Stack
+
+| Category | Technology |
+|---|---|
+| Framework | React 19 |
+| Build Tool | Vite 7 |
+| Routing | React Router DOM v7 |
+| Styling | Tailwind CSS v4, DaisyUI v5 |
+| HTTP Client | Axios (with JWT interceptors) |
+| Forms | React Hook Form |
+| Notifications | React Hot Toast |
+| Icons | Lucide React, React Icons |
+| Carousel | Swiper |
+| Deployment | Vercel |
+
+---
+
+## 📁 Project Structure
+
+```
+bondhon-blood-bank-frontend/
+├── public/                 # Static assets
+├── src/
+│   ├── components/         # Reusable UI components (Navbar, Footer, Cards, etc.)
+│   ├── pages/              # Page-level components (Home, Donors, Requests, Dashboard, etc.)
+│   ├── hooks/              # Custom React hooks
+│   ├── context/            # Auth context / global state
+│   ├── api/                # Axios instance and API helpers
+│   └── main.jsx            # App entry point
+├── index.html
+├── package.json
+├── vite.config.js
+├── vercel.json             # Vercel SPA routing config
+└── eslint.config.js
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Node.js** v18+
+- **npm** or **yarn**
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/naim13107/bondhon-blood-bank-frontend.git
+cd bondhon-blood-bank-frontend
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Set up environment variables
+
+Create a `.env` file in the project root:
+
+```env
+VITE_API_BASE_URL=https://bloodbank-teal.vercel.app/api/v1
+```
+
+> For local backend development, replace with `http://127.0.0.1:8000/api/v1`
+
+### 4. Start the development server
+
+```bash
+npm run dev
+```
+
+The app will be available at `http://localhost:5173`
+
+---
+
+## 📜 Available Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start local development server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build locally |
+| `npm run lint` | Run ESLint |
+
+---
+
+## 🗂️ Pages & Routes
+
+| Route | Description |
+|---|---|
+| `/` | Home — hero section, platform overview |
+| `/donors` | Browse all registered blood donors |
+| `/donors/:id` | Individual donor profile |
+| `/requests` | View all emergency blood requests |
+| `/requests/:id` | Blood request detail page |
+| `/dashboard` | Authenticated user dashboard (my requests, transactions) |
+| `/login` | Login page |
+| `/register` | Registration page |
+| `/payment/success` | SSLCommerz payment success handler |
+| `/payment/fail` | SSLCommerz payment failure handler |
+
+---
+
+## 🔌 API Integration
+
+This frontend consumes the [Bondhon Backend REST API](https://github.com/naim13107/Bondhon-BloodBank-Backend).
+
+A custom **Axios instance** handles:
+- Base URL configuration
+- Automatic JWT `Authorization` header injection
+- Token refresh on 401 responses
+- Error interceptors
+
+```js
+// Example usage
+import apiClient from './api/apiClient';
+
+const donors = await apiClient.get('/donors/');
+const request = await apiClient.post('/requests/', { blood_group: 'O+', ... });
+```
+
+---
+
+## ☁️ Deployment (Vercel)
+
+The app is deployed as a **Single Page Application (SPA)** on Vercel. The `vercel.json` ensures all routes are served by `index.html`:
+
+```json
+{
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}
+```
+
+To deploy your own:
+
+1. Push code to GitHub
+2. Import repository on [Vercel](https://vercel.com)
+3. Set `VITE_API_BASE_URL` in environment variables
+4. Deploy 🎉
+
+---
+
+## 📦 Key Dependencies
+
+```json
+{
+  "react": "^19.2.0",
+  "react-router-dom": "^7.13.1",
+  "axios": "^1.13.5",
+  "tailwindcss": "^4.2.1",
+  "daisyui": "^5.5.19",
+  "react-hook-form": "^7.71.2",
+  "react-hot-toast": "^2.6.0",
+  "lucide-react": "^0.575.0",
+  "swiper": "^12.1.2"
+}
+```
+
+---
+
+## 🔗 Related Repositories
+
+| Repo | Description |
+|---|---|
+| [Bondhon Backend](https://github.com/naim13107/Bondhon-BloodBank-Backend) | Django REST API — authentication, donors, blood requests, payments |
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -m 'Add your feature'`)
+4. Push to the branch (`git push origin feature/your-feature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is open-source. Feel free to use it for educational or personal purposes.
+
+---
+
+## 👤 Author
+
+**Naim Haque** — [@naim13107](https://github.com/naim13107)
+
+---
+
+> *Bondhon (বন্ধন) — meaning "bond" in Bengali — connecting lives through the gift of blood.*
