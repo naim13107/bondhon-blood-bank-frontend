@@ -235,7 +235,7 @@ This project is open-source. Feel free to use it for educational or personal pur
 
 ## 👤 Author
 
-**Naim Haque** — [@naim13107](https://github.com/naim13107)
+**Md.Naim-Ul-Haque** — [@naim13107](https://github.com/naim13107)
 
 ---
 
