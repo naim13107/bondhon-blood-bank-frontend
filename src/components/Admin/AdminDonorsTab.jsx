@@ -1,6 +1,6 @@
-import { Eye } from "lucide-react";
+import { Eye, Trash2 } from "lucide-react"; // ← added Trash2
 
-const AdminDonorsTab = ({ donors, onViewDonor }) => {
+const AdminDonorsTab = ({ donors, onViewDonor, onDeleteUser }) => { // ← added onDeleteUser
   return (
     <div className="bg-base-100 rounded-2xl shadow-sm border border-base-300 overflow-hidden">
       <div className="overflow-x-auto">
@@ -28,12 +28,20 @@ const AdminDonorsTab = ({ donors, onViewDonor }) => {
                   )}
                 </td>
                 <td>
-                  <button
-                    onClick={() => onViewDonor(donor)}
-                    className="btn btn-sm btn-outline btn-info"
-                  >
-                    <Eye size={16} /> View
-                  </button>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => onViewDonor(donor)}
+                      className="btn btn-sm btn-outline btn-info"
+                    >
+                      <Eye size={16} /> View
+                    </button>
+                    <button
+                      onClick={() => onDeleteUser(donor.user)} // donor.user is the user ID
+                      className="btn btn-sm btn-error btn-outline"
+                    >
+                      <Trash2 size={16} /> Delete
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}

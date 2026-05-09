@@ -1,7 +1,3 @@
-// ============================================================
-// FILE: src/pages/ResetPassword.jsx
-// ============================================================
-
 import { useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import apiClient from "../services/api-client";
@@ -26,16 +22,20 @@ export default function ResetPassword() {
     }
     setLoading(true);
     try {
-      await apiClient.post("/accounts/reset-password/", {
+      await apiClient.post("/auth/users/reset_password_confirm/", { // ← fixed endpoint
         uid,
         token,
         new_password: password,
+        re_new_password: confirm, // ← Djoser requires this
       });
       toast.success("Password reset! Please log in.");
       navigate("/login");
     } catch (err) {
       const msg =
-        err?.response?.data?.error || "Invalid or expired link. Please try again.";
+        err?.response?.data?.token?.[0] ||
+        err?.response?.data?.uid?.[0] ||
+        err?.response?.data?.new_password?.[0] ||
+        "Invalid or expired link. Please try again.";
       toast.error(msg);
     } finally {
       setLoading(false);
@@ -48,7 +48,7 @@ export default function ResetPassword() {
         <div className="card-body">
           <h2 className="card-title text-2xl font-bold mb-2 text-base-content">Reset Password</h2>
           <p className="text-base-content/60 text-sm mb-4">Please enter your new password below.</p>
-          
+
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="form-control">
               <label className="label">

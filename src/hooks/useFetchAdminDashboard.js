@@ -12,7 +12,6 @@ const useFetchAdminDashboard = (user, navigate) => {
   const config = { headers: { Authorization: `JWT ${tokens?.access}` } };
 
   const fetchAdminData = useCallback(async () => {
-    // Admin Guard
     if (user && !user.is_staff && !user.is_superuser) {
       toast.error("Access denied. Admins only.");
       navigate("/dashboard");
@@ -21,12 +20,10 @@ const useFetchAdminDashboard = (user, navigate) => {
 
     setLoading(true);
     try {
-      // Fetch both endpoints concurrently for better performance
       const [donorsRes, requestsRes] = await Promise.all([
         apiClient.get("/donors/", config),
         apiClient.get("/requests/", config)
       ]);
-      
       setDonors(donorsRes.data.results || donorsRes.data);
       setRequests(requestsRes.data.results || requestsRes.data);
     } catch (error) {
@@ -41,20 +38,33 @@ const useFetchAdminDashboard = (user, navigate) => {
     fetchAdminData();
   }, [fetchAdminData]);
 
+  // DELETE REQUEST — calls the new admin endpoint
   const deleteRequest = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this request? This action cannot be undone.")) return;
-    
+    if (!window.confirm("Delete this request? This cannot be undone.")) return;
     try {
-      await apiClient.delete(`/requests/${id}/`, config);
-      // Update local state to remove the deleted item instantly
+      await apiClient.delete(`/admin-panel/requests/${id}/`, config);
       setRequests(prev => prev.filter(req => req.id !== id));
       toast.success("Request deleted successfully.");
     } catch (error) {
-      toast.error("Failed to delete request.");
+      const msg = error.response?.data?.error || "Failed to delete request.";
+      toast.error(msg);
     }
   };
 
-  return { donors, requests, loading, deleteRequest };
+  // DELETE USER — new function
+  const deleteUser = async (userId) => {
+    if (!window.confirm("Delete this user? This cannot be undone.")) return;
+    try {
+      await apiClient.delete(`/admin-panel/users/${userId}/`, config);
+      setDonors(prev => prev.filter(d => d.user !== userId));
+      toast.success("User deleted successfully.");
+    } catch (error) {
+      const msg = error.response?.data?.error || "Failed to delete user.";
+      toast.error(msg);
+    }
+  };
+
+  return { donors, requests, loading, deleteRequest, deleteUser };
 };
 
 export default useFetchAdminDashboard;

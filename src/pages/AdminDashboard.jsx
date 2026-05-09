@@ -11,11 +11,9 @@ import DonorDetailsModal from "../components/Admin/DonorDetailsModal";
 const AdminDashboard = () => {
   const { user } = useAuthContext();
   const navigate = useNavigate();
-  
-  // Custom Hook handles data fetching and delete actions
-  const { donors, requests, loading, deleteRequest } = useFetchAdminDashboard(user, navigate);
-  
-  // Local UI State
+
+  const { donors, requests, loading, deleteRequest, deleteUser } = useFetchAdminDashboard(user, navigate); // ← added deleteUser
+
   const [activeTab, setActiveTab] = useState("donors");
   const [selectedDonor, setSelectedDonor] = useState(null);
 
@@ -34,40 +32,29 @@ const AdminDashboard = () => {
         <p className="text-base-content/60">Manage all platform data, donors, and emergency requests.</p>
       </div>
 
-      {/* Admin Tabs */}
       <div className="tabs tabs-boxed bg-base-200 p-2 mb-8 inline-flex">
-        <button 
-          className={`tab px-8 py-2 font-bold text-lg h-auto transition-all ${
-            activeTab === 'donors' 
-            ? 'tab-active bg-red-600 text-white rounded-lg shadow-md' 
-            : 'text-base-content/50 hover:text-base-content'
-          }`}
+        <button
+          className={`tab px-8 py-2 font-bold text-lg h-auto transition-all ${activeTab === 'donors' ? 'tab-active bg-red-600 text-white rounded-lg shadow-md' : 'text-base-content/50 hover:text-base-content'}`}
           onClick={() => setActiveTab('donors')}
         >
           <Users className="w-5 h-5 mr-2 inline" /> Donors Directory
         </button>
-        <button 
-          className={`tab px-8 py-2 font-bold text-lg h-auto transition-all ${
-            activeTab === 'requests' 
-            ? 'tab-active bg-red-600 text-white rounded-lg shadow-md' 
-            : 'text-base-content/50 hover:text-base-content'
-          }`}
+        <button
+          className={`tab px-8 py-2 font-bold text-lg h-auto transition-all ${activeTab === 'requests' ? 'tab-active bg-red-600 text-white rounded-lg shadow-md' : 'text-base-content/50 hover:text-base-content'}`}
           onClick={() => setActiveTab('requests')}
         >
           <Activity className="w-5 h-5 mr-2 inline" /> Manage Requests
         </button>
       </div>
 
-      {/* Render Active Tab Component */}
       <div className="bg-base-100 rounded-2xl shadow-sm border border-base-300 overflow-hidden">
         {activeTab === 'donors' ? (
-          <AdminDonorsTab donors={donors} onViewDonor={setSelectedDonor} />
+          <AdminDonorsTab donors={donors} onViewDonor={setSelectedDonor} onDeleteUser={deleteUser} /> // ← added onDeleteUser
         ) : (
           <AdminRequestsTab requests={requests} onDeleteRequest={deleteRequest} />
         )}
       </div>
 
-      {/* Render Modal Overlay */}
       <DonorDetailsModal donor={selectedDonor} onClose={() => setSelectedDonor(null)} />
     </div>
   );

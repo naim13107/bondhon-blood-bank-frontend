@@ -17,7 +17,7 @@ export default function ForgotPassword() {
     if (!email) return toast.error("Please enter your email.");
     setLoading(true);
     try {
-      await apiClient.post("/accounts/forgot-password/", { email });
+      await apiClient.post("/auth/users/reset_password/", { email });
       setSent(true);
       toast.success("Reset link sent! Check your email.");
     } catch {
