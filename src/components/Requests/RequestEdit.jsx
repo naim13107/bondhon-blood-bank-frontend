@@ -11,7 +11,7 @@ const RequestEdit = () => {
   const [saving, setSaving] = useState(false);
   
   const bloodGroups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date().toISOString().split('T');
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
@@ -53,19 +53,19 @@ const RequestEdit = () => {
     }
   };
 
-  if (loading) return <div className="text-center py-20"><span className="loading loading-spinner text-red-600 loading-lg"></span></div>;
+  if (loading) return <div className="text-center py-20"><span className="loading loading-spinner text-error loading-lg"></span></div>;
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-12">
-      <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">Modify Blood Request</h2>
+      <div className="bg-base-100 p-8 rounded-xl shadow-sm border border-base-300">
+        <h2 className="text-2xl font-bold text-base-content mb-6">Modify Blood Request</h2>
         
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="form-control">
-              <label className="label font-bold text-gray-700">Blood Group</label>
+              <label className="label font-bold text-base-content">Blood Group</label>
               <select 
-                className={`select select-bordered w-full ${errors.blood_group ? 'select-error' : ''}`}
+                className={`select select-bordered w-full bg-base-200 text-base-content ${errors.blood_group ? 'select-error' : ''}`}
                 {...register("blood_group", { required: "Required" })}
               >
                 <option value="" disabled>Select Group</option>
@@ -74,31 +74,31 @@ const RequestEdit = () => {
             </div>
 
             <div className="form-control">
-              <label className="label font-bold text-gray-700">Bags Needed</label>
+              <label className="label font-bold text-base-content">Bags Needed</label>
               <input 
                 type="number" 
-                className={`input input-bordered w-full ${errors.bags_needed ? 'input-error' : ''}`} 
+                className={`input input-bordered w-full bg-base-200 text-base-content ${errors.bags_needed ? 'input-error' : ''}`} 
                 {...register("bags_needed", { required: "Required", min: { value: 1, message: "At least 1 bag" } })}
               />
-              {errors.bags_needed && <span className="text-red-500 text-sm mt-1">{errors.bags_needed.message}</span>}
+              {errors.bags_needed && <span className="text-error text-sm mt-1">{errors.bags_needed.message}</span>}
             </div>
           </div>
 
           <div className="form-control">
-            <label className="label font-bold text-gray-700">Hospital Name</label>
+            <label className="label font-bold text-base-content">Hospital Name</label>
             <input 
               type="text" 
-              className={`input input-bordered w-full ${errors.hospital_name ? 'input-error' : ''}`} 
+              className={`input input-bordered w-full bg-base-200 text-base-content ${errors.hospital_name ? 'input-error' : ''}`} 
               {...register("hospital_name", { required: "Hospital name is required" })}
             />
           </div>
 
           <div className="form-control">
-            <label className="label font-bold text-gray-700">Donation Date</label>
+            <label className="label font-bold text-base-content">Donation Date</label>
             <input 
               type="date" 
               min={today}
-              className={`input input-bordered w-full ${errors.donation_date ? 'input-error' : ''}`} 
+              className={`input input-bordered w-full bg-base-200 text-base-content ${errors.donation_date ? 'input-error' : ''}`} 
               {...register("donation_date", { required: "Date is required" })}
             />
           </div>

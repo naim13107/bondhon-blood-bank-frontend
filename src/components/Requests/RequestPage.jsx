@@ -27,9 +27,9 @@ const RequestsPage = () => {
   const bloodGroups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8 bg-gray-50 min-h-screen">
+    <div className="max-w-7xl mx-auto px-4 py-8 bg-base-200 min-h-screen">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-        <h1 className="text-3xl font-bold text-gray-900">Emergency Blood Requests</h1>
+        <h1 className="text-3xl font-bold text-base-content">Emergency Blood Requests</h1>
         
         <Link 
           to="/add-request" 
@@ -51,7 +51,9 @@ const RequestsPage = () => {
       />
       
       {/* Pass the refresh function to the list */}
-      <RequestList requests={requests} loading={loading} onRefresh={refresh} />
+      <div className="mb-8">
+        <RequestList requests={requests} loading={loading} onRefresh={refresh} />
+      </div>
       
       <Pagination
         totalPages={totalPages}

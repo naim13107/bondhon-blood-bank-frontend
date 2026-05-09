@@ -36,7 +36,6 @@ const RequestDetails = () => {
     const tokens = tokenString ? JSON.parse(tokenString) : null;
     const config = { headers: { Authorization: `JWT ${tokens?.access}` } };
     
-    // Check if current user is in donor_emails
     const hasCommitted = request.donor_emails?.includes(user?.email);
     const endpoint = hasCommitted ? 'withdraw' : 'accept';
 
@@ -52,15 +51,15 @@ const RequestDetails = () => {
     }
   };
 
-  if (loading) return <div className="text-center py-20"><span className="loading loading-spinner text-red-600 loading-lg"></span></div>;
+  if (loading) return <div className="text-center py-20"><span className="loading loading-spinner text-error loading-lg"></span></div>;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10">
-      <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-gray-500 hover:text-red-600 mb-6 font-medium">
+    <div className="max-w-4xl mx-auto px-4 py-10 bg-base-100">
+      <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-base-content/60 hover:text-error mb-6 font-medium transition-colors">
         <ArrowLeft size={20} /> Back to Requests
       </button>
 
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+      <div className="bg-base-100 rounded-2xl shadow-sm border border-base-300 overflow-hidden">
         <RequestDetailsHeader 
           bloodGroup={request.blood_group}
           hospitalName={request.hospital_name}
@@ -68,19 +67,18 @@ const RequestDetails = () => {
         />
         
         {/* Recipient Details Section */}
-        <div className="px-8 py-4 bg-gray-50 flex items-center justify-between border-b border-gray-100">
-           <div className="flex items-center gap-2 text-sm text-gray-600">
-              <Clock size={16} className="text-gray-400" /> 
-              <span>Posted: <span className="font-semibold">{new Date(request.created_at).toLocaleDateString()}</span></span>
-              <span className="mx-2">|</span>
-              <Mail size={16} className="text-gray-400" />
-              <span>Recipient: <span className="font-semibold">{request.recipient_email}</span></span>
+        <div className="px-8 py-4 bg-base-200 flex flex-wrap items-center justify-between border-b border-base-300 gap-2">
+           <div className="flex items-center gap-2 text-sm text-base-content/70">
+              <Clock size={16} className="text-base-content/40" /> 
+              <span>Posted: <span className="font-semibold text-base-content">{new Date(request.created_at).toLocaleDateString()}</span></span>
+              <span className="mx-2 hidden sm:inline">|</span>
+              <Mail size={16} className="text-base-content/40" />
+              <span>Recipient: <span className="font-semibold text-base-content">{request.recipient_email}</span></span>
            </div>
         </div>
 
         <RequestInfoGrid request={request} />
 
-        {/* 3. The New Donor List Section */}
         <DonorList donorEmails={request.donor_emails} />
 
         <RequestActionFooter 

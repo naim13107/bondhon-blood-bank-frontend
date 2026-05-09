@@ -14,7 +14,8 @@ import Dashboard from "../pages/Dashboard";
 import EditRequest from "../pages/EditRequest";
 import AdminDashboard from "../pages/AdminDashboard";
 import Donate from "../pages/Donate";
-
+import ForgotPassword from "../pages/ForgotPassword";
+import ResetPassword from "../pages/ResetPassword";
 import PaymentSuccess from '../pages/PaymentSuccess'; 
 import PaymentFail from '../pages/PaymentFail';       
 import TransactionHistory from '../pages/TransactionHistory';

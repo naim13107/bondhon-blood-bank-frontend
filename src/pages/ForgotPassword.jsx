@@ -1,13 +1,10 @@
 // ============================================================
-// FILE: src/pages/ForgotPassword.jsx   (NEW FILE)
-// ============================================================
-// Add route in App.jsx:  <Route path="/forgot-password" element={<ForgotPassword />} />
-// Add link on Login page: <Link to="/forgot-password">Forgot password?</Link>
+// FILE: src/pages/ForgotPassword.jsx
 // ============================================================
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import apiClient from "../api/apiClient"; // adjust path if different
+import apiClient from "../services/api-client";
 import toast from "react-hot-toast";
 
 export default function ForgotPassword() {
@@ -31,13 +28,16 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-base-200">
-      <div className="card w-full max-w-md shadow-xl bg-base-100">
+    <div className="min-h-screen flex items-center justify-center bg-base-200 px-4">
+      <div className="card w-full max-w-md shadow-xl bg-base-100 border border-base-300">
         <div className="card-body">
-          <h2 className="card-title text-2xl font-bold mb-2">Forgot Password</h2>
+          <h2 className="card-title text-2xl font-bold mb-2 text-base-content">Forgot Password</h2>
 
           {sent ? (
-            <div className="alert alert-success">
+            <div className="alert alert-success shadow-md text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
               <span>
                 If that email is registered, you'll receive a reset link shortly.
               </span>
@@ -49,11 +49,11 @@ export default function ForgotPassword() {
               </p>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text font-semibold text-base-content">Email</span>
                 </label>
                 <input
                   type="email"
-                  className="input input-bordered w-full"
+                  className="input input-bordered w-full bg-base-200 text-base-content focus:border-error"
                   placeholder="you@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -62,7 +62,7 @@ export default function ForgotPassword() {
               </div>
               <button
                 type="submit"
-                className="btn btn-primary w-full"
+                className="btn btn-error w-full text-white shadow-md"
                 disabled={loading}
               >
                 {loading ? <span className="loading loading-spinner" /> : "Send Reset Link"}
@@ -70,8 +70,8 @@ export default function ForgotPassword() {
             </form>
           )}
 
-          <div className="text-center mt-4">
-            <Link to="/login" className="link link-primary text-sm">
+          <div className="text-center mt-6">
+            <Link to="/login" className="text-sm font-medium text-base-content/60 hover:text-error transition-colors">
               ← Back to Login
             </Link>
           </div>

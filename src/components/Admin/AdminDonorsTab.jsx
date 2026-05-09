@@ -2,10 +2,10 @@ import { Eye } from "lucide-react";
 
 const AdminDonorsTab = ({ donors, onViewDonor }) => {
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+    <div className="bg-base-100 rounded-2xl shadow-sm border border-base-300 overflow-hidden">
       <div className="overflow-x-auto">
         <table className="table w-full">
-          <thead className="bg-gray-50 text-gray-700 text-sm">
+          <thead className="bg-base-200 text-base-content text-sm">
             <tr>
               <th>ID</th>
               <th>Donor Name</th>
@@ -16,21 +16,21 @@ const AdminDonorsTab = ({ donors, onViewDonor }) => {
           </thead>
           <tbody>
             {donors.map(donor => (
-              <tr key={donor.id} className="hover:bg-gray-50 transition-colors">
-                <td className="font-mono text-gray-400">#{donor.id}</td>
-                <td className="font-bold">{donor.full_name || `User ${donor.user}`}</td>
+              <tr key={donor.id} className="hover:bg-base-200 transition-colors">
+                <td className="font-mono text-base-content/40">#{donor.id}</td>
+                <td className="font-bold text-base-content">{donor.full_name || `User ${donor.user}`}</td>
                 <td><span className="badge badge-error text-white font-bold">{donor.blood_group}</span></td>
                 <td>
                   {donor.is_available ? (
-                    <span className="text-green-600 font-semibold text-sm">Available</span>
+                    <span className="text-success font-semibold text-sm">Available</span>
                   ) : (
-                    <span className="text-orange-500 font-semibold text-sm">On Cooldown</span>
+                    <span className="text-warning font-semibold text-sm">On Cooldown</span>
                   )}
                 </td>
                 <td>
-                  <button 
+                  <button
                     onClick={() => onViewDonor(donor)}
-                    className="btn btn-sm btn-outline bg-blue-50 text-blue-600 border-none hover:bg-blue-100"
+                    className="btn btn-sm btn-outline btn-info"
                   >
                     <Eye size={16} /> View
                   </button>
@@ -39,7 +39,7 @@ const AdminDonorsTab = ({ donors, onViewDonor }) => {
             ))}
           </tbody>
         </table>
-        {donors.length === 0 && <p className="text-center py-6 text-gray-500">No donors found.</p>}
+        {donors.length === 0 && <p className="text-center py-6 text-base-content/50">No donors found.</p>}
       </div>
     </div>
   );

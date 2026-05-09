@@ -9,7 +9,7 @@ const RequestList = ({ requests, loading, onRefresh }) => {
 
   if (loading) return (
     <div className="text-center py-20">
-      <span className="loading loading-spinner text-red-600 loading-lg"></span>
+      <span className="loading loading-spinner text-error loading-lg"></span>
     </div>
   );
 
@@ -20,8 +20,8 @@ const RequestList = ({ requests, loading, onRefresh }) => {
 
   if (!visibleRequests || visibleRequests.length === 0) {
     return (
-      <div className="text-center py-20 bg-gray-50 rounded-2xl border-2 border-dashed border-gray-200">
-        <p className="font-medium text-gray-500">No emergency requests found.</p>
+      <div className="text-center py-20 bg-base-200 rounded-2xl border-2 border-dashed border-base-300">
+        <p className="font-medium text-base-content/50">No emergency requests found.</p>
       </div>
     );
   }
