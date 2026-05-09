@@ -43,12 +43,12 @@ const AddRequest = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto my-10 p-8 bg-white rounded-2xl shadow-lg border border-gray-100">
-      <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Post Blood Request</h2>
+    <div className="max-w-2xl mx-auto my-10 p-8 bg-base-100 rounded-2xl shadow-lg border border-base-300">
+      <h2 className="text-3xl font-bold text-base-content mb-6 text-center">Post Blood Request</h2>
       
       <form onSubmit={handleSubmit} className="space-y-5">
         <div className="form-control">
-          <label className="label font-semibold">Required Blood Group</label>
+          <label className="label font-semibold text-base-content">Required Blood Group</label>
           <select 
             required
             className="select select-bordered"
@@ -61,7 +61,7 @@ const AddRequest = () => {
         </div>
 
         <div className="form-control">
-          <label className="label font-semibold">Bags Needed</label>
+          <label className="label font-semibold text-base-content">Bags Needed</label>
           <input 
             type="number" 
             className="input input-bordered"
@@ -73,7 +73,7 @@ const AddRequest = () => {
         </div>
 
         <div className="form-control">
-          <label className="label font-semibold">Hospital Name</label>
+          <label className="label font-semibold text-base-content">Hospital Name</label>
           <input 
             type="text" 
             className="input input-bordered"
@@ -84,7 +84,7 @@ const AddRequest = () => {
         </div>
 
         <div className="form-control">
-          <label className="label font-semibold">Donation Date</label>
+          <label className="label font-semibold text-base-content">Donation Date</label>
           <input 
             type="date" 
             className="input input-bordered"

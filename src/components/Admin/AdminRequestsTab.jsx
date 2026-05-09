@@ -3,10 +3,10 @@ import { Trash2, Edit } from "lucide-react";
 
 const AdminRequestsTab = ({ requests, onDeleteRequest }) => {
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+    <div className="bg-base-100 rounded-2xl shadow-sm border border-base-300 overflow-hidden">
       <div className="overflow-x-auto">
         <table className="table w-full">
-          <thead className="bg-gray-50 text-gray-700 text-sm">
+          <thead className="bg-base-200 text-base-content text-sm">
             <tr>
               <th>ID</th>
               <th>Hospital & Date</th>
@@ -17,16 +17,16 @@ const AdminRequestsTab = ({ requests, onDeleteRequest }) => {
           </thead>
           <tbody>
             {requests.map(req => (
-              <tr key={req.id} className="hover:bg-gray-50 transition-colors">
-                <td className="font-mono text-gray-400">#{req.id}</td>
+              <tr key={req.id} className="hover:bg-base-200 transition-colors">
+                <td className="font-mono text-base-content/40">#{req.id}</td>
                 <td>
-                  <div className="font-bold text-gray-800">{req.hospital_name}</div>
-                  <div className="text-sm text-gray-500">{req.donation_date}</div>
+                  <div className="font-bold text-base-content">{req.hospital_name}</div>
+                  <div className="text-sm text-base-content/50">{req.donation_date}</div>
                 </td>
                 <td>
                   <div className="flex items-center gap-2">
-                    <span className="text-lg font-black text-red-600">{req.blood_group}</span>
-                    <span className="text-xs text-gray-500">({req.current_donors_count}/{req.bags_needed} Bags)</span>
+                    <span className="text-lg font-black text-error">{req.blood_group}</span>
+                    <span className="text-xs text-base-content/50">({req.current_donors_count}/{req.bags_needed} Bags)</span>
                   </div>
                 </td>
                 <td>
@@ -38,12 +38,12 @@ const AdminRequestsTab = ({ requests, onDeleteRequest }) => {
                 </td>
                 <td>
                   <div className="flex gap-2">
-                    <Link to={`/edit-request/${req.id}`} className="btn btn-sm bg-gray-100 text-gray-700 hover:bg-gray-200 border-none">
+                    <Link to={`/edit-request/${req.id}`} className="btn btn-sm btn-outline">
                       <Edit size={16} /> Edit
                     </Link>
-                    <button 
+                    <button
                       onClick={() => onDeleteRequest(req.id)}
-                      className="btn btn-sm bg-red-50 text-red-600 hover:bg-red-100 border-none"
+                      className="btn btn-sm btn-error btn-outline"
                     >
                       <Trash2 size={16} /> Delete
                     </button>
@@ -53,7 +53,7 @@ const AdminRequestsTab = ({ requests, onDeleteRequest }) => {
             ))}
           </tbody>
         </table>
-        {requests.length === 0 && <p className="text-center py-6 text-gray-500">No requests found.</p>}
+        {requests.length === 0 && <p className="text-center py-6 text-base-content/50">No requests found.</p>}
       </div>
     </div>
   );

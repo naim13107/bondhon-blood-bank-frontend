@@ -3,14 +3,14 @@ import bloodDonorDayImage from "../assets/images/world-blood-donor-day-illustrat
 
 const WorldBloodDonorDaySection = () => {
   return (
-    <section className="bg-red-50 py-16 px-4">
+    <section className="bg-base-200 py-16 px-4">
       <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12">
         {/* Left Content Section */}
         <div className="md:w-1/2 text-center md:text-left">
-          <h2 className="text-3xl md:text-4xl font-bold text-red-700 mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-error mb-6">
             Celebrate World Blood Donor Day
           </h2>
-          <p className="text-gray-700 text-lg mb-8 leading-relaxed">
+          <p className="text-base-content/80 text-lg mb-8 leading-relaxed">
             "Every year on June 14th, we celebrate the life-saving impact of voluntary blood donors. But keeping a safe, reliable blood supply flowing requires resources. Your financial contribution funds the urgent logistics, secure storage, and platform operations that connect donors with patients in critical need. Fuel our mission—support our operations and help us save lives today!"
           </p>
           <Link to={'/fundraising'}>

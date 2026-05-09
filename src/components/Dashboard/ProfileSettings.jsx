@@ -16,17 +16,21 @@ const ProfileSettings = ({ tokens }) => {
     .finally(() => setLoading(false));
   }, [tokens]);
 
-  if (loading) return <div className="text-center py-10"><span className="loading loading-spinner text-red-600"></span></div>;
+  if (loading) return (
+    <div className="text-center py-10">
+      <span className="loading loading-spinner text-error"></span>
+    </div>
+  );
 
   return (
     <div className="space-y-8 max-w-2xl">
-      <AccountSettingsForm 
-        userDetails={dashboardData?.user_details} 
-        tokens={tokens} 
+      <AccountSettingsForm
+        userDetails={dashboardData?.user_details}
+        tokens={tokens}
       />
-      <DonorProfileForm 
-        donorProfile={dashboardData?.donor_profile} 
-        tokens={tokens} 
+      <DonorProfileForm
+        donorProfile={dashboardData?.donor_profile}
+        tokens={tokens}
       />
     </div>
   );

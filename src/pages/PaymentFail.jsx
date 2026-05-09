@@ -6,15 +6,15 @@ const PaymentFail = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[60vh] px-4">
-      <div className="bg-white p-8 rounded-3xl shadow-xl text-center max-w-md border border-red-50">
+    <div className="flex flex-col items-center justify-center min-h-[60vh] px-4 bg-base-100">
+      <div className="bg-base-100 p-8 rounded-3xl shadow-xl text-center max-w-md border border-base-300">
         <div className="flex justify-center mb-6">
-          <div className="bg-red-100 p-4 rounded-full text-red-600">
+          <div className="bg-error/10 p-4 rounded-full text-error">
             <XCircle size={64} />
           </div>
         </div>
-        <h2 className="text-3xl font-black text-gray-900 mb-4">Payment Failed</h2>
-        <p className="text-gray-600 mb-8 text-lg">
+        <h2 className="text-3xl font-black text-base-content mb-4">Payment Failed</h2>
+        <p className="text-base-content/60 mb-8 text-lg">
           Something went wrong with the transaction. Don't worry, your account has not been charged.
         </p>
         <button 

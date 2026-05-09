@@ -10,7 +10,7 @@ const RequestItem = ({ request, currentUserId, onRefresh }) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
-  // FIX: Check the 'donors' array for the user's ID, not their email
+  // Check the 'donors' array for the user's ID
   const hasDonated = request.donors?.includes(currentUserId);
 
   const handleDonationToggle = async (e) => {
@@ -34,7 +34,7 @@ const RequestItem = ({ request, currentUserId, onRefresh }) => {
       
       toast.success(hasDonated ? "Withdrawn successfully" : "Accepted successfully!");
       
-      // FIX: Seamlessly update the UI without refreshing the whole page
+      // Update the UI without refreshing the whole page
       onRefresh(); 
     } catch (error) {
       const errorMsg = error.response?.data?.error || "Action failed.";
@@ -45,12 +45,12 @@ const RequestItem = ({ request, currentUserId, onRefresh }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col h-full hover:shadow-md transition-shadow">
+    <div className="bg-base-100 rounded-xl shadow-sm border border-base-300 overflow-hidden flex flex-col h-full hover:shadow-md transition-shadow">
       <Link to={`/requests/${request.id}`} className="flex flex-col flex-1">
-        <div className="bg-red-50 p-4 border-b border-red-100 flex justify-between items-center">
+        <div className="bg-error/10 p-4 border-b border-error/20 flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            <Droplets className="h-6 w-6 text-red-600" />
-            <span className="text-2xl font-black text-red-700">{request.blood_group}</span>
+            <Droplets className="h-6 w-6 text-error" />
+            <span className="text-2xl font-black text-error">{request.blood_group}</span>
           </div>
           {request.is_fulfilled ? (
             <span className="badge badge-success text-white font-bold">Fulfilled</span>
@@ -60,27 +60,27 @@ const RequestItem = ({ request, currentUserId, onRefresh }) => {
         </div>
 
         <div className="p-6 flex-1 space-y-4">
-          <div className="flex items-start space-x-3 text-gray-700">
-            <MapPin className="h-5 w-5 text-gray-400 mt-0.5 flex-shrink-0" />
+          <div className="flex items-start space-x-3 text-base-content">
+            <MapPin className="h-5 w-5 text-base-content/40 mt-0.5 flex-shrink-0" />
             <span className="font-medium">{request.hospital_name}</span>
           </div>
-          <div className="flex items-center space-x-3 text-gray-700">
-            <Calendar className="h-5 w-5 text-gray-400 flex-shrink-0" />
-            <span className="text-sm">Needed: <span className="font-bold">{request.donation_date}</span></span>
+          <div className="flex items-center space-x-3 text-base-content/70">
+            <Calendar className="h-5 w-5 text-base-content/40 flex-shrink-0" />
+            <span className="text-sm">Needed: <span className="font-bold text-base-content">{request.donation_date}</span></span>
           </div>
-          <div className="flex items-center space-x-3 text-gray-700">
-            <Users className="h-5 w-5 text-gray-400 flex-shrink-0" />
-            <span className="text-sm">Donors: <span className="font-bold text-red-600">{request.donors?.length || 0}</span> / {request.bags_needed}</span>
+          <div className="flex items-center space-x-3 text-base-content/70">
+            <Users className="h-5 w-5 text-base-content/40 flex-shrink-0" />
+            <span className="text-sm">Donors: <span className="font-bold text-error">{request.donors?.length || 0}</span> / {request.bags_needed}</span>
           </div>
         </div>
       </Link>
 
-      <div className="p-4 bg-gray-50 border-t border-gray-100">
+      <div className="p-4 bg-base-200 border-t border-base-300">
         <button 
           onClick={handleDonationToggle}
           disabled={loading || (request.is_fulfilled && !hasDonated)}
           className={`btn btn-block text-white border-none ${
-            hasDonated ? 'bg-gray-600 hover:bg-gray-700' : 'bg-red-600 hover:bg-red-700'
+            hasDonated ? 'bg-neutral hover:bg-neutral-focus' : 'bg-red-600 hover:bg-red-700'
           }`}
         >
           {loading ? (

@@ -8,10 +8,10 @@ const Fundraising = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
-      <div className="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row">
+      <div className="bg-base-100 rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row border border-base-300">
         
         {/* Left Side - Image */}
-        <div className="md:w-1/2 bg-red-50 flex items-center justify-center p-10">
+        <div className="md:w-1/2 bg-base-200 flex items-center justify-center p-10">
           <img 
             src={blooddonor} 
             alt="Blood donation bag and medical supplies illustration" 
@@ -22,15 +22,15 @@ const Fundraising = () => {
         {/* Right Side - Content */}
         <div className="flex-1 p-8 md:p-16 flex flex-col justify-center space-y-6">
           <div className="flex items-center space-x-3">
-            <div className="bg-red-100 p-3 rounded-full">
-              <HeartHandshake className="text-red-600 w-8 h-8" />
+            <div className="bg-error/10 p-3 rounded-full">
+              <HeartHandshake className="text-error w-8 h-8" />
             </div>
-            <h1 className="text-4xl font-black text-gray-900 leading-tight">
+            <h1 className="text-4xl font-black text-base-content leading-tight">
               Fuel Our Mission to Save Lives
             </h1>
           </div>
           
-          <div className="space-y-4 text-lg text-gray-600">
+          <div className="space-y-4 text-lg text-base-content/80">
             <p>
               Your generous donation is the lifeblood of our platform. It helps us maintain our technology, organize local blood donation camps, and reach more people in urgent need.
             </p>
@@ -48,7 +48,7 @@ const Fundraising = () => {
               <HeartHandshake className="w-6 h-6" />
               Donate Fund
             </button>
-            <p className="text-gray-500 text-sm mt-4 pl-2">
+            <p className="text-base-content/60 text-sm mt-4 pl-2">
               Your transaction is secure and encrypted.
             </p>
           </div>

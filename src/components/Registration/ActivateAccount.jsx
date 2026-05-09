@@ -24,9 +24,9 @@ const ActivateAccount = () => {
   }, [uid, token, navigate]);
 
   return (
-    <div className="flex items-center justify-center min-h-[80vh] bg-gray-50 px-4">
-      <div className="card w-full max-w-md bg-white shadow-xl border border-gray-100 p-8 text-center">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Account Activation</h2>
+    <div className="flex items-center justify-center min-h-[80vh] bg-base-200 px-4">
+      <div className="card w-full max-w-md bg-base-100 shadow-xl border border-base-300 p-8 text-center">
+        <h2 className="text-2xl font-bold text-base-content mb-6">Account Activation</h2>
         
         {message && (
           <div role="alert" className="alert alert-success text-white">
@@ -43,7 +43,7 @@ const ActivateAccount = () => {
         {!message && !error && (
           <div className="mt-4">
             <span className="loading loading-spinner text-red-600"></span>
-            <p className="text-gray-500 mt-2">Verifying your account...</p>
+            <p className="text-base-content/60 mt-2">Verifying your account...</p>
           </div>
         )}
       </div>
