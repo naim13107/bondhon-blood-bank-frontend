@@ -5,6 +5,7 @@ import { toast } from 'react-hot-toast';
 const useFetchAdminDashboard = (user, navigate) => {
   const [donors, setDonors] = useState([]);
   const [requests, setRequests] = useState([]);
+  const [stats, setStats] = useState(null); // Added stats state
   const [loading, setLoading] = useState(true);
 
   const tokenString = localStorage.getItem("authTokens");
@@ -20,15 +21,14 @@ const useFetchAdminDashboard = (user, navigate) => {
 
     setLoading(true);
     try {
-      const [donorsRes, requestsRes] = await Promise.all([
-        apiClient.get("/donors/", config),
-        apiClient.get("/requests/", config)
-      ]);
-      setDonors(donorsRes.data.results || donorsRes.data);
-      setRequests(requestsRes.data.results || requestsRes.data);
+      // Hit the new dedicated summary endpoint
+      const response = await apiClient.get("/admin-panel/summary/", config);
+      
+      setDonors(response.data.all_donors);
+      setRequests(response.data.all_requests);
+      setStats(response.data.stats);
     } catch (error) {
       toast.error("Failed to load admin data.");
-      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -64,7 +64,8 @@ const useFetchAdminDashboard = (user, navigate) => {
     }
   };
 
-  return { donors, requests, loading, deleteRequest, deleteUser };
+ return { donors, requests, stats, loading, deleteRequest, deleteUser };
 };
+
 
 export default useFetchAdminDashboard;
