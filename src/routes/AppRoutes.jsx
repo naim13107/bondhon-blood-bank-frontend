@@ -83,6 +83,9 @@ const AppRoutes = () => {
         <Route path="dashboard/payment/cancel" element={<PrivateRoute><PaymentCancel/></PrivateRoute>} /> 
 
       </Route>
+
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password/:uid/:token" element={<ResetPassword />} />
     </Routes>
   );
 };

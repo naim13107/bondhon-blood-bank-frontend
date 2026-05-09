@@ -63,7 +63,7 @@ const Login = () => {
               {loading ? <span className="loading loading-spinner"></span> : "Login"}
             </button>
           </form>
-
+          <Link to="/forgot-password">Forgot password?</Link>
           <div className="text-center mt-6">
             <p className="text-gray-600">
               Don't have an account? <Link to="/register" className="text-red-600 font-bold hover:underline">Sign up</Link>
