@@ -1,17 +1,10 @@
-// ============================================================
-// FILE: src/context/ThemeContext.jsx   (NEW FILE)
-// ============================================================
-// Uses DaisyUI's built-in theme attribute on <html>.
-// Wrap your <App /> with <ThemeProvider> in main.jsx.
-// ============================================================
-
 import { createContext, useContext, useEffect, useState } from "react";
 
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(
-    () => localStorage.getItem("bondhon-theme") || "light"
+    () => localStorage.getItem("bondhon-theme") || "light"  // default is light
   );
 
   useEffect(() => {
