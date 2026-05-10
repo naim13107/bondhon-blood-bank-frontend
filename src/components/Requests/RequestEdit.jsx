@@ -16,7 +16,7 @@ const RequestEdit = () => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
   useEffect(() => {
-    // Fetch existing request data to pre-fill the form
+    
     apiClient.get(`/requests/${id}/`)
       .then(res => {
         reset({
@@ -39,7 +39,7 @@ const RequestEdit = () => {
     const tokens = tokenString ? JSON.parse(tokenString) : null;
 
     try {
-      // Use PATCH to partially update the request
+     
       await apiClient.patch(`/requests/${id}/`, data, {
         headers: { Authorization: `JWT ${tokens?.access}` }
       });

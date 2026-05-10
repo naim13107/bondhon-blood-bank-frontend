@@ -3,7 +3,7 @@ import { Moon, Sun } from "lucide-react";
 
 const ThemeToggle = () => {
   const [theme, setTheme] = useState(
-    localStorage.getItem("bondhon-theme") || "light"  // default is light
+    localStorage.getItem("bondhon-theme") || "light"  
   );
 
   useEffect(() => {

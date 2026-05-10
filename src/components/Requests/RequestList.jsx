@@ -4,7 +4,7 @@ import useAuthContext from "../../hooks/useAuthContext";
 const RequestList = ({ requests, loading, onRefresh }) => {
   const { user } = useAuthContext();
   
-  // Safely grab the user ID and ensure it is a number
+ 
   const currentUserId = user ? Number(user.user_id || user.id) : null;
 
   if (loading) return (
@@ -13,7 +13,7 @@ const RequestList = ({ requests, loading, onRefresh }) => {
     </div>
   );
 
-  // Safely compare numbers so strict inequality works
+  
   const visibleRequests = user 
     ? requests.filter(req => Number(req.recipient) !== currentUserId) 
     : requests; 

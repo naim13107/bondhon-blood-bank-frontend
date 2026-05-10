@@ -4,7 +4,6 @@ import useAuthContext from "../hooks/useAuthContext";
 import useFetchAdminDashboard from "../hooks/useFetchAdminDashboard";
 import { Users, Activity, BarChart3, ShieldCheck } from "lucide-react";
 
-// Correct paths from pages to components/Admin
 import AdminDonorsTab from "../components/Admin/AdminDonorsTab";
 import AdminRequestsTab from "../components/Admin/AdminRequestsTab";
 import DonorDetailsModal from "../components/Admin/DonorDetailsModal";

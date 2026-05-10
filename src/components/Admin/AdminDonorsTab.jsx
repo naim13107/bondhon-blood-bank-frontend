@@ -17,7 +17,7 @@ const AdminDonorsTab = ({ donors, onViewDonor, onDeleteUser }) => {
         
         <tbody className="text-slate-200">
           {donors.map((donor, index) => {
-            // SAFE ACCESS: Check top-level first, then nested user_details
+          
             const displayName = donor.full_name || donor.user_details?.full_name || "Unknown User";
             const displayEmail = donor.email || donor.user_details?.email || "No email provided";
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import { HeartHandshake } from 'lucide-react';
-import { useNavigate } from 'react-router-dom'; // 1. Import useNavigate
+import { useNavigate } from 'react-router-dom'; 
 import blooddonor from "../assets/images/world-blood-donor-day-illustration.webp";
 
 const Fundraising = () => {
-  const navigate = useNavigate(); // 2. Initialize it
+  const navigate = useNavigate(); 
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">

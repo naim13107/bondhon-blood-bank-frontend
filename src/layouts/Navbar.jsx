@@ -75,7 +75,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-2">
-            <ThemeToggle /> {/* ← also in mobile header */}
+            <ThemeToggle />
             <button 
               onClick={toggleMenu}
               className="text-base-content/80 hover:text-red-600 focus:outline-none"

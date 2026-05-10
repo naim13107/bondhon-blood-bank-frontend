@@ -25,7 +25,7 @@ const useAuth = () => {
     if (!tokenToUse) return;
 
     try {
-      // Added trailing slash to prevent Django 301 redirects from dropping the token
+     
       const response = await apiClient.get("/auth/users/me/", {
         headers: { Authorization: `JWT ${tokenToUse}` },
       });
@@ -35,28 +35,28 @@ const useAuth = () => {
     }
   };
 
-  // Login User
+
   const loginUser = async (userData) => {
     setErrorMsg("");
     try {
-      // Added trailing slash
+   
       const response = await apiClient.post("/auth/jwt/create/", userData);
       setAuthTokens(response.data);
       localStorage.setItem("authTokens", JSON.stringify(response.data));
 
-      // After login, set user by explicitly passing the fresh token
+     
       await fetchUserProfile(response.data.access);
     } catch (error) {
       setErrorMsg(error.response?.data?.detail || "Login failed");
-      throw error; // Re-throw to let the Login component know it failed
+      throw error; 
     }
   };
 
-  // Register User
+
   const registerUser = async (userData) => {
     setErrorMsg("");
     try {
-      // Added trailing slash
+
       await apiClient.post("/auth/users/", userData);
       return {
         success: true,
@@ -78,7 +78,7 @@ const useAuth = () => {
     }
   };
 
-  // Logout User
+
   const logoutUser = () => {
     setAuthTokens(null);
     setUser(null);

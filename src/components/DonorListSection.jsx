@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-// Path fixed to go up one level to src, then into services
 import apiClient from "../services/api-client"; 
 import { User, MapPin, Search } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -10,7 +9,6 @@ const DonorListSection = () => {
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
-    // API call filtered for medically eligible donors
     apiClient.get("/donors/?is_available=true")
       .then(res => {
         setDonors(res.data.results || []);
@@ -66,7 +64,7 @@ const DonorListSection = () => {
                   <td>
                     <div className="flex items-center gap-3">
                       <div className="avatar placeholder">
-                        {/* FIXED: Added items-center and justify-center to fix icon alignment */}
+                        
                         <div className="bg-error/10 text-error rounded-full w-10 flex items-center justify-center">
                           <User size={20} />
                         </div>

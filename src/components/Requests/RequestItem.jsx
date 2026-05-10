@@ -10,7 +10,7 @@ const RequestItem = ({ request, currentUserId, onRefresh }) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
-  // Check the 'donors' array for the user's ID
+  
   const hasDonated = request.donors?.includes(currentUserId);
 
   const handleDonationToggle = async (e) => {
@@ -34,7 +34,7 @@ const RequestItem = ({ request, currentUserId, onRefresh }) => {
       
       toast.success(hasDonated ? "Withdrawn successfully" : "Accepted successfully!");
       
-      // Update the UI without refreshing the whole page
+      
       onRefresh(); 
     } catch (error) {
       const errorMsg = error.response?.data?.error || "Action failed.";

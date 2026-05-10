@@ -4,7 +4,7 @@ const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(
-    () => localStorage.getItem("bondhon-theme") || "light"  // default is light
+    () => localStorage.getItem("bondhon-theme") || "light"  
   );
 
   useEffect(() => {

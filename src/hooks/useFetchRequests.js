@@ -6,7 +6,7 @@ const useFetchRequests = (page, bloodGroup, search, ordering) => {
   const [loading, setLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
   
-  // A trigger state to manually force a re-fetch without reloading the page
+ 
   const [refreshTrigger, setRefreshTrigger] = useState(0);
 
   const refresh = useCallback(() => {
@@ -30,7 +30,7 @@ const useFetchRequests = (page, bloodGroup, search, ordering) => {
       })
       .catch((err) => console.error(err))
       .finally(() => setLoading(false));
-  }, [page, bloodGroup, search, ordering, refreshTrigger]); // Added refreshTrigger to dependencies
+  }, [page, bloodGroup, search, ordering, refreshTrigger]); 
 
   return { requests, loading, totalPages, refresh };
 };

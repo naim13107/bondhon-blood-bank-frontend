@@ -3,7 +3,7 @@ import { MapPin, Calendar, Activity, Droplets, Mail } from "lucide-react";
 const DonorDetailsModal = ({ donor, onClose }) => {
   if (!donor) return null;
 
-  // Destructure for cleaner access, handling the nested user_details from your serializer
+  
   const fullName = donor.user_details?.full_name || donor.full_name || "Unknown User";
   const email = donor.user_details?.email || "No email provided";
 

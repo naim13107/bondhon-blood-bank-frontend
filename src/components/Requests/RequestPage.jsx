@@ -2,12 +2,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom"; 
 import { PlusCircle } from "lucide-react"; 
 
-// Components
+
 import RequestList from "./RequestList";
 import Pagination from "./Pagination";
 import RequestFilterSection from "./RequestFilterSection";
 
-// Custom Hook
+
 import useFetchRequests from "../../hooks/useFetchRequests";
 
 const RequestsPage = () => {
@@ -16,7 +16,7 @@ const RequestsPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState(""); 
 
-  // Pull 'refresh' from the hook
+
   const { requests, loading, totalPages, refresh } = useFetchRequests(
     currentPage,
     selectedBloodGroup,

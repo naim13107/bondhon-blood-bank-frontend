@@ -9,7 +9,7 @@ const PaymentCancel = () => {
     <div className="flex flex-col items-center justify-center min-h-[60vh] px-4 bg-base-100">
       <div className="bg-base-100 p-8 rounded-3xl shadow-xl text-center max-w-md border border-base-300">
         <div className="flex justify-center mb-6">
-          {/* Using DaisyUI warning colors to signify a warning or "stopped" action */}
+          
           <div className="bg-warning/10 p-4 rounded-full text-warning">
             <AlertCircle size={64} />
           </div>

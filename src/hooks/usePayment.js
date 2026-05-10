@@ -8,7 +8,6 @@ const usePayment = () => {
   const initiatePayment = async (amount) => {
     setLoading(true);
     
-    // 1. Grab tokens - strictly required for this backend endpoint
     const tokenString = localStorage.getItem("authTokens");
     const tokens = tokenString ? JSON.parse(tokenString) : null;
 

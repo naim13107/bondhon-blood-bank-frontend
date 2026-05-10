@@ -5,7 +5,7 @@ const PrivateRoute = ({ children }) => {
   const { user } = useAuthContext();
   const location = useLocation();
 
-  // Show a loading spinner while checking auth status
+
   if (user === null && localStorage.getItem("authTokens")) {
     return (
       <div className="flex min-h-screen items-center justify-center">
@@ -14,7 +14,7 @@ const PrivateRoute = ({ children }) => {
     );
   }
 
-  // Redirect to login if not authenticated, preserving the intended destination
+  
   return user ? children : <Navigate to="/login" state={{ from: location }} replace />;
 };
 

@@ -22,11 +22,11 @@ export default function ResetPassword() {
     }
     setLoading(true);
     try {
-      await apiClient.post("/auth/users/reset_password_confirm/", { // ← fixed endpoint
+      await apiClient.post("/auth/users/reset_password_confirm/", { 
         uid,
         token,
         new_password: password,
-        re_new_password: confirm, // ← Djoser requires this
+        re_new_password: confirm, 
       });
       toast.success("Password reset! Please log in.");
       navigate("/login");

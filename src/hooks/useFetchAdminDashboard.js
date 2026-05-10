@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast';
 const useFetchAdminDashboard = (user, navigate) => {
   const [donors, setDonors] = useState([]);
   const [requests, setRequests] = useState([]);
-  const [stats, setStats] = useState(null); // Added stats state
+  const [stats, setStats] = useState(null); 
   const [loading, setLoading] = useState(true);
 
   const tokenString = localStorage.getItem("authTokens");
@@ -21,7 +21,7 @@ const useFetchAdminDashboard = (user, navigate) => {
 
     setLoading(true);
     try {
-      // Hit the new dedicated summary endpoint
+     
       const response = await apiClient.get("/admin-panel/summary/", config);
       
       setDonors(response.data.all_donors);
@@ -38,7 +38,7 @@ const useFetchAdminDashboard = (user, navigate) => {
     fetchAdminData();
   }, [fetchAdminData]);
 
-  // DELETE REQUEST — calls the new admin endpoint
+  
   const deleteRequest = async (id) => {
     if (!window.confirm("Delete this request? This cannot be undone.")) return;
     try {
@@ -51,7 +51,7 @@ const useFetchAdminDashboard = (user, navigate) => {
     }
   };
 
-  // DELETE USER — new function
+ 
   const deleteUser = async (userId) => {
     if (!window.confirm("Delete this user? This cannot be undone.")) return;
     try {
